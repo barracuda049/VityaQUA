@@ -1,1 +1,1 @@
-# VityaQUA
+# VityaQUA (Quantization for Visual Transformers)
