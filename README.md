@@ -19,7 +19,6 @@ The CIFAR-10 dataset is a widely used benchmark dataset in computer vision, part
 
 Typical split into training and test sets was performed, with 50,000 images used for training and 10,000 images reserved for testing.
 
-
 <p align="center">
     <img src="./imgs/CIFAR10.png" width="60%" />
 </p>
@@ -38,17 +37,14 @@ Quantization maps a floating-point value $x \in [\alpha, \beta]$ to a $b$-bit in
 The de-quantization process is defined as $x = s(x_q + z)$, and the quantization process is defined as $x_q = \text{round}\left(\frac{1}{s}x - z\right)$, where $c$ and $d$ are variables.
 
 In practice, the quantization process may produce $x$ outside the range $[\alpha, \beta]$, that is why clipping is introduced:
-$$
-\begin{align*}
-x_q = \text{clip}\left(\text{round}\left(\frac{1}{s}x + z\right), \alpha_q, \beta_q\right)\end{align*}
-$$
+<p align="center">
+    <img src="./imgs/quant.png" width="70%" />
+</p>
 
 where $\text{clip}(x, l, u)$ is defined as:
-$$
-\begin{align*}
-\text{clip}(x, l, u) = \begin{cases} l & \text{if } x < l \\ x & \text{if } l \leq x \leq u \\ u & \text{if } x > u \end{cases}
-\end{align*}
-$$
+<p align="center">
+    <img src="./imgs/clip.png" width="60%" />
+</p>
 
 ## Singlular Value Decomposition
 
@@ -56,11 +52,9 @@ Suppose we perform the matrix multiplication $Y = XW + b$, where $X \in \mathbb{
 We can decompose $W = U \Sigma V^T$, where $U \in \mathbb{R}^{p \times p}$ and $V \in \mathbb{R}^{n \times n}$ are orthogonal matrices. \
 $\Sigma$ is a matrix of singular values. We consider only $r < min(p, n)$ singular values to reconstruct matrix $W =>$ $U_r = \mathbb{R}^{p \times r}$, $V_r \in \mathbb{R}^{n \times r}$ and $\Sigma \in \mathbb{R}_+^{r \times r}$. \
 In this case we can rewrite $Y$ as:
-$$
-\begin{align*}
-Y = x V_r U_r^T \Sigma + b
-\end{align*}
-$$
+<p align="center">
+    <img src="./imgs/svd.png" width="40%" />
+</p>
 
 ## How to Run Our Code?
 
