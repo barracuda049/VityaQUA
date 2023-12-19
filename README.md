@@ -48,9 +48,11 @@ where $\text{clip}(x, l, u)$ is defined as:
 
 ## Singlular Value Decomposition
 
-Suppose we perform the matrix multiplication $Y = XW + b$, where $X \in \mathbb{R}^{m \times p}$, $W \in \mathbb{R}^{p \times n}$, and $b \in \mathbb{R}^n$ resulting in $Y \in \mathbb{R}^{m \times n}$. \
-We can decompose $W = U \Sigma V^T$, where $U \in \mathbb{R}^{p \times p}$ and $V \in \mathbb{R}^{n \times n}$ are orthogonal matrices. \
-$\Sigma$ is a matrix of singular values. We consider only $r < min(p, n)$ singular values to reconstruct matrix $W =>$ $U_r = \mathbb{R}^{p \times r}$, $V_r \in \mathbb{R}^{n \times r}$ and $\Sigma \in \mathbb{R}_+^{r \times r}$. \
+Suppose we perform the matrix multiplication $Y = XW^T + b$, where $X \in \mathbb{R}^{m \times p}$, $W \in \mathbb{R}^{n \times p}$, and $b \in \mathbb{R}^n$ resulting in $Y \in \mathbb{R}^{m \times n}$. \
+We can decompose $W = U \Sigma V^T$, where $U \in \mathbb{R}^{n \times n}$ and $V \in \mathbb{R}^{p \times p}$ are orthogonal matrices. \
+$\Sigma$ is a matrix of singular values. We consider only $r < min(p, n)$ singular values to reconstruct matrix $W =>$ $U_r = \mathbb{R}^{n \times r}$, $V_r \in \mathbb{R}^{p \times r}$ and $\Sigma \in \mathbb{R}_+^{r \times r}$. 
+We transpose matrix of weights. Thus, $W^T \in \mathbb{R}^{p \times n}$.
+
 In this case we can rewrite $Y$ as:
 <p align="center">
     <img src="./imgs/svd.png" width="40%" />
